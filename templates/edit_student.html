@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Student</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="dashboard-navbar">
+            <h2>🎓 Student Management System</h2>
+            <div class="nav-right">
+                <a href="/students" class="btn btn-secondary">View Students</a>
+                <a href="/logout" class="btn btn-logout">Logout</a>
+            </div>
+        </div>
+
+        <div class="dashboard-body">
+            <div class="form-page-card">
+                <h3>✏️ Edit Student</h3>
+                <form method="POST">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" name="name" value="{{ student['name'] }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" name="email" value="{{ student['email'] }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Course</label>
+                        <input type="text" name="course" value="{{ student['course'] }}" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Update Student</button>
+                        <a href="/students" class="btn btn-secondary">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

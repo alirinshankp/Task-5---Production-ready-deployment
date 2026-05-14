@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="dashboard-navbar">
+            <h2>🎓 Student Management System</h2>
+            <div class="nav-right">
+                <span class="badge badge-user">👤 {{ user }} ({{ role }})</span>
+                <a href="/logout" class="btn btn-logout">Logout</a>
+            </div>
+        </div>
+
+        <div class="dashboard-body">
+            <div class="welcome-card">
+                <h3>👋 Welcome, <span class="username">{{ user }}</span>!</h3>
+                <p>You are logged in as a <strong>{{ role }}</strong>. You can view and add students below.</p>
+            </div>
+
+            <div class="info-cards">
+                <a href="/students" class="info-card card-link">
+                    <h4>📋 View Students</h4>
+                    <p>See all student records.</p>
+                </a>
+                <a href="/add-student" class="info-card card-link">
+                    <h4>➕ Add Student</h4>
+                    <p>Add a new student record.</p>
+                </a>
+                <div class="info-card">
+                    <h4>🔒 Your Role</h4>
+                    <p>You have <strong>user</strong> access. Admins have additional privileges.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

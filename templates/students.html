@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="dashboard-navbar">
+            <h2>🎓 Student Management System</h2>
+            <div class="nav-right">
+                {% if role == 'admin' %}
+                <a href="/admin" class="btn btn-secondary">Admin Panel</a>
+                {% else %}
+                <a href="/dashboard" class="btn btn-secondary">Dashboard</a>
+                {% endif %}
+                <a href="/logout" class="btn btn-logout">Logout</a>
+            </div>
+        </div>
+
+        <div class="dashboard-body">
+            <div class="page-header">
+                <h3>📋 All Students</h3>
+                <a href="/add-student" class="btn btn-primary" style="width:auto;">➕ Add Student</a>
+            </div>
+
+            {% if students %}
+            <div class="table-card">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Course</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for s in students %}
+                        <tr>
+                            <td>{{ s['id'] }}</td>
+                            <td>{{ s['name'] }}</td>
+                            <td>{{ s['email'] }}</td>
+                            <td>{{ s['course'] }}</td>
+                            <td>
+                                <a href="/edit/{{ s['id'] }}" class="btn-action btn-edit">✏️ Edit</a>
+                                {% if role == 'admin' %}
+                                <a href="/admin/delete/{{ s['id'] }}"
+                                   class="btn-action btn-delete"
+                                   onclick="return confirm('Delete this student?')">
+                                   🗑️ Delete
+                                </a>
+                                {% else %}
+                                <span style="color:#94a3b8; font-size:12px;">🔒 Admin only</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="table-card">
+                <p class="no-data">No students found. <a href="/add-student">Add the first one!</a></p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
