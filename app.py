@@ -367,6 +367,8 @@ def api_get_users():
     return jsonify([dict(row) for row in users])
 
 
+# Initialize database on startup (runs on Render too)
+init_db()
+
 if __name__ == '__main__':
-    init_db()
     app.run(debug=False)
